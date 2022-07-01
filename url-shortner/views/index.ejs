@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL shortener</title>
+    <style>
+     table, th, td {
+       border: 1px solid;
+       padding: 2em;
+        }
+        button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+input {
+    padding: 15px 32px;
+    font-size: 16px;
+    text-align: center;
+
+}
+label{
+    font-size: 16px;
+    text-align: center;
+
+}
+thead{
+    background-color:black;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <center>
+
+        <h1>URL Shrinker</h1>
+        <form action="/shortUrls" method="POST">
+            <label for="fullUrl">Url</label>
+            <input type="url" name="fullUrl" id="fullUrl" placeholder="Type Url here">
+        <button type="submit">Shrink</button>
+      </form>
+  <br><br>
+      <table>
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% shortUrls.forEach(shortUrl=>{ %>
+                <tr>
+                    <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                    <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                    <td><%= shortUrl.clicks %></td>
+                </tr>
+                <% }) %>
+                
+            </tbody>
+      </table>
+    </center>
+    </body>
+    </html>
